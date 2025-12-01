@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "iec62443-audit"
+version = "1.0.0"
+description = "IEC 62443 security level assessment tool for industrial control systems"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "isecwire GmbH", email = "info@isecwire.com" },
+]
+keywords = [
+    "iec62443", "ics", "security", "audit", "scada", "ot-security",
+    "nist-csf", "iso27001", "nis2", "eu-cra", "compliance",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+]
+dependencies = [
+    "rich>=13.0",
+    "pyyaml>=6.0",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+tui = ["textual>=0.40"]
+
+[project.scripts]
+iec62443-audit = "iec62443_audit.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/isecwire/iec62443-audit"
+Documentation = "https://github.com/isecwire/iec62443-audit#readme"
+Issues = "https://github.com/isecwire/iec62443-audit/issues"
