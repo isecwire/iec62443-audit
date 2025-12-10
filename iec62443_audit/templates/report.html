@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEC 62443-3-3 Assessment Report — {{ system_name }}</title>
+<style>
+  :root {
+    --primary: #1a365d;
+    --primary-light: #2c5282;
+    --accent: #ed8936;
+    --success: #38a169;
+    --warning: #d69e2e;
+    --danger: #e53e3e;
+    --bg: #f7fafc;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --text-muted: #718096;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+  .header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: .25rem; }
+  .header .subtitle { opacity: .85; font-size: 1rem; }
+  .header .meta { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 2rem; font-size: .9rem; opacity: .9; }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .card h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem; }
+  .card h3 { font-size: 1.05rem; color: var(--primary-light); margin-bottom: .75rem; }
+
+  /* Summary grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .stat-card .value { font-size: 2rem; font-weight: 700; }
+  .stat-card .label { font-size: .85rem; color: var(--text-muted); margin-top: .25rem; }
+  .sl-pass { color: var(--success); }
+  .sl-warn { color: var(--warning); }
+  .sl-fail { color: var(--danger); }
+
+  /* Bar chart (pure CSS) */
+  .bar-chart { margin: 1rem 0; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: .6rem;
+  }
+  .bar-label {
+    width: 60px;
+    font-weight: 600;
+    font-size: .85rem;
+    flex-shrink: 0;
+  }
+  .bar-track {
+    flex: 1;
+    height: 24px;
+    background: #edf2f7;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width .3s;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: .75rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .bar-target {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--primary);
+  }
+  .bar-target::after {
+    content: "T";
+    position: absolute;
+    top: -16px;
+    left: -4px;
+    font-size: .65rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .bar-val {
+    width: 50px;
+    text-align: right;
+    font-size: .8rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-left: .5rem;
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  th, td { padding: .6rem .75rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #f1f5f9; font-weight: 600; color: var(--primary); }
+  tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-block;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    font-size: .78rem;
+    font-weight: 600;
+  }
+  .badge-pass { background: #c6f6d5; color: #276749; }
+  .badge-gap  { background: #fed7d7; color: #9b2c2c; }
+  .badge-warn { background: #fefcbf; color: #975a16; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+  }
+
+  @media print {
+    body { background: #fff; }
+    .container { padding: 0; }
+    .card { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>IEC 62443-3-3 Security Assessment Report</h1>
+    <div class="subtitle">{{ system_name }}</div>
+    <div class="meta">
+      <span>Assessor: {{ assessor_name }}</span>
+      <span>Date: {{ assessment_date }}</span>
+      <span>Target: SL-{{ sl_target }}</span>
+    </div>
+  </div>
+
+  <!-- Summary stats -->
+  <div class="summary-grid">
+    <div class="stat-card">
+      <div class="value {% if overall_sl_achieved >= sl_target %}sl-pass{% elif overall_sl_achieved >= sl_target - 1 %}sl-warn{% else %}sl-fail{% endif %}">
+        SL-{{ overall_sl_achieved }}
+      </div>
+      <div class="label">Overall SL Achieved</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">SL-{{ sl_target }}</div>
+      <div class="label">Target Security Level</div>
+    </div>
+    <div class="stat-card">
+      <div class="value {% if overall_compliance_pct >= 80 %}sl-pass{% elif overall_compliance_pct >= 50 %}sl-warn{% else %}sl-fail{% endif %}">
+        {{ overall_compliance_pct }}%
+      </div>
+      <div class="label">Overall Compliance</div>
+    </div>
+    <div class="stat-card">
+      <div class="value {% if total_gaps == 0 %}sl-pass{% else %}sl-fail{% endif %}">
+        {{ total_gaps }}
+      </div>
+      <div class="label">Total Gaps</div>
+    </div>
+  </div>
+
+  <!-- FR overview chart -->
+  <div class="card">
+    <h2>Foundational Requirements Overview</h2>
+    <div class="bar-chart">
+      {% for fr in foundational_requirements %}
+      <div class="bar-row">
+        <div class="bar-label">{{ fr.abbreviation }}</div>
+        <div class="bar-track">
+          {% set pct = (fr.sl_achieved_avg / 4 * 100)|round|int %}
+          {% set target_pct = (sl_target / 4 * 100)|round|int %}
+          <div class="bar-fill" style="width: {{ pct }}%; background: {% if fr.compliance_pct >= 80 %}var(--success){% elif fr.compliance_pct >= 50 %}var(--warning){% else %}var(--danger){% endif %};">
+            {{ fr.sl_achieved_avg }}
+          </div>
+          <div class="bar-target" style="left: {{ target_pct }}%;"></div>
+        </div>
+        <div class="bar-val">{{ fr.compliance_pct }}%</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- FR summary table -->
+  <div class="card">
+    <h2>Summary by Foundational Requirement</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>FR</th>
+          <th>Name</th>
+          <th>SL Achieved</th>
+          <th>SL Target</th>
+          <th>Compliance</th>
+          <th>Gaps</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fr in foundational_requirements %}
+        <tr>
+          <td><strong>{{ fr.fr_id }}</strong></td>
+          <td>{{ fr.fr_name }}</td>
+          <td>
+            <span class="badge {% if fr.sl_achieved >= sl_target %}badge-pass{% elif fr.sl_achieved >= sl_target - 1 %}badge-warn{% else %}badge-gap{% endif %}">
+              SL-{{ fr.sl_achieved }}
+            </span>
+          </td>
+          <td>SL-{{ fr.sl_target }}</td>
+          <td>{{ fr.compliance_pct }}%</td>
+          <td>{{ fr.gap_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Detailed SR tables per FR -->
+  {% for fr in foundational_requirements %}
+  <div class="card">
+    <h3>{{ fr.fr_id }}: {{ fr.fr_name }} ({{ fr.abbreviation }})</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SR</th>
+          <th>Name</th>
+          <th>Achieved</th>
+          <th>Target</th>
+          <th>Gap</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sr in fr.system_requirements %}
+        <tr>
+          <td>{{ sr.sr_id }}</td>
+          <td>{{ sr.sr_name }}</td>
+          <td>
+            <span class="badge {% if sr.compliant %}badge-pass{% elif sr.gap <= 1 %}badge-warn{% else %}badge-gap{% endif %}">
+              SL-{{ sr.sl_achieved }}
+            </span>
+          </td>
+          <td>SL-{{ sr.sl_target }}</td>
+          <td>{% if sr.gap > 0 %}<span class="badge badge-gap">-{{ sr.gap }}</span>{% else %}<span class="badge badge-pass">OK</span>{% endif %}</td>
+          <td style="font-size:.82rem; color:var(--text-muted);">{{ sr.notes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+
+  <div class="footer">
+    Generated by <strong>iec62443-audit</strong> &mdash; isecwire GmbH<br>
+    IEC 62443-3-3 Security Level Assessment Tool
+  </div>
+</div>
+</body>
+</html>
