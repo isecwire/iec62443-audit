@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      text { font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace; }
+    </style>
+  </defs>
+
+  <!-- Terminal window -->
+  <rect width="900" height="600" rx="8" fill="#1a1b26"/>
+
+  <!-- Title bar -->
+  <rect width="900" height="36" rx="8" fill="#24283b"/>
+  <rect y="28" width="900" height="8" fill="#24283b"/>
+  <circle cx="20" cy="18" r="6" fill="#f7768e"/>
+  <circle cx="40" cy="18" r="6" fill="#e0af68"/>
+  <circle cx="60" cy="18" r="6" fill="#9ece6a"/>
+  <text x="450" y="22" fill="#a9b1d6" font-size="12" text-anchor="middle" font-weight="bold">iec62443-audit -- bash</text>
+
+  <!-- Header -->
+  <text x="30" y="68" fill="#7aa2f7" font-size="14" font-weight="bold">iec62443-audit v1.0.0</text>
+  <text x="265" y="68" fill="#565f89" font-size="14"> -- </text>
+  <text x="290" y="68" fill="#a9b1d6" font-size="14">IEC 62443 Security Level Assessment</text>
+
+  <!-- System info line -->
+  <text x="30" y="94" fill="#a9b1d6" font-size="12">System:</text>
+  <text x="90" y="94" fill="#c0caf5" font-size="12" font-weight="bold">Gateway-Pro v2.1</text>
+  <text x="248" y="94" fill="#565f89" font-size="12">|</text>
+  <text x="262" y="94" fill="#a9b1d6" font-size="12">Standard:</text>
+  <text x="342" y="94" fill="#c0caf5" font-size="12" font-weight="bold">IEC 62443-3-3</text>
+  <text x="472" y="94" fill="#565f89" font-size="12">|</text>
+  <text x="486" y="94" fill="#a9b1d6" font-size="12">Target SL:</text>
+  <text x="574" y="94" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="108" x2="870" y2="108" stroke="#3b4261" stroke-width="1"/>
+
+  <!-- FR1 -->
+  <text x="42" y="136" fill="#c0caf5" font-size="12">FR1 Identification &amp; Auth</text>
+  <rect x="310" y="124" width="112" height="14" rx="2" fill="#9ece6a"/>
+  <rect x="422" y="124" width="48" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="136" fill="#e0af68" font-size="12">SL-A: 2</text>
+  <text x="556" y="136" fill="#a9b1d6" font-size="12">(71%)</text>
+
+  <!-- FR2 -->
+  <text x="42" y="162" fill="#c0caf5" font-size="12">FR2 Use Control</text>
+  <rect x="310" y="150" width="136" height="14" rx="2" fill="#9ece6a"/>
+  <rect x="446" y="150" width="24" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="162" fill="#9ece6a" font-size="12">SL-A: 3</text>
+  <text x="556" y="162" fill="#a9b1d6" font-size="12">(85%)</text>
+
+  <!-- FR3 -->
+  <text x="42" y="188" fill="#c0caf5" font-size="12">FR3 System Integrity</text>
+  <rect x="310" y="176" width="148" height="14" rx="2" fill="#9ece6a"/>
+  <rect x="458" y="176" width="12" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="188" fill="#9ece6a" font-size="12">SL-A: 3</text>
+  <text x="556" y="188" fill="#a9b1d6" font-size="12">(92%)</text>
+
+  <!-- FR4 -->
+  <text x="42" y="214" fill="#c0caf5" font-size="12">FR4 Data Confidentiality</text>
+  <rect x="310" y="202" width="108" height="14" rx="2" fill="#e0af68"/>
+  <rect x="418" y="202" width="52" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="214" fill="#f7768e" font-size="12">SL-A: 2</text>
+  <text x="556" y="214" fill="#a9b1d6" font-size="12">(67%)</text>
+
+  <!-- FR5 -->
+  <text x="42" y="240" fill="#c0caf5" font-size="12">FR5 Restricted Data Flow</text>
+  <rect x="310" y="228" width="160" height="14" rx="2" fill="#9ece6a"/>
+  <text x="484" y="240" fill="#9ece6a" font-size="12">SL-A: 3</text>
+  <text x="556" y="240" fill="#a9b1d6" font-size="12">(100%)</text>
+
+  <!-- FR6 -->
+  <text x="42" y="266" fill="#c0caf5" font-size="12">FR6 Timely Response</text>
+  <rect x="310" y="254" width="120" height="14" rx="2" fill="#9ece6a"/>
+  <rect x="430" y="254" width="40" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="266" fill="#e0af68" font-size="12">SL-A: 2</text>
+  <text x="556" y="266" fill="#a9b1d6" font-size="12">(75%)</text>
+
+  <!-- FR7 -->
+  <text x="42" y="292" fill="#c0caf5" font-size="12">FR7 Resource Availability</text>
+  <rect x="310" y="280" width="132" height="14" rx="2" fill="#9ece6a"/>
+  <rect x="442" y="280" width="28" height="14" rx="2" fill="#292e42"/>
+  <text x="484" y="292" fill="#9ece6a" font-size="12">SL-A: 3</text>
+  <text x="556" y="292" fill="#a9b1d6" font-size="12">(83%)</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="314" x2="870" y2="314" stroke="#3b4261" stroke-width="1"/>
+
+  <!-- Overall summary -->
+  <text x="42" y="342" fill="#a9b1d6" font-size="12">Overall:</text>
+  <text x="110" y="342" fill="#e0af68" font-size="13" font-weight="bold">SL-2</text>
+  <text x="153" y="342" fill="#565f89" font-size="12">(target: SL-3)</text>
+  <text x="280" y="342" fill="#565f89" font-size="12">|</text>
+  <text x="296" y="342" fill="#a9b1d6" font-size="12">Compliance:</text>
+  <text x="398" y="342" fill="#9ece6a" font-size="13" font-weight="bold">82%</text>
+  <text x="440" y="342" fill="#565f89" font-size="12">|</text>
+  <text x="456" y="342" fill="#a9b1d6" font-size="12">Gaps:</text>
+  <text x="500" y="342" fill="#f7768e" font-size="13" font-weight="bold">9 SRs</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="362" x2="870" y2="362" stroke="#3b4261" stroke-width="1"/>
+
+  <!-- Top gaps header -->
+  <text x="42" y="390" fill="#7aa2f7" font-size="13" font-weight="bold">Top gaps:</text>
+
+  <!-- Gap 1 -->
+  <text x="58" y="416" fill="#f7768e" font-size="12">SR 1.2</text>
+  <text x="120" y="416" fill="#a9b1d6" font-size="12">Software identification and authentication</text>
+  <text x="560" y="416" fill="#565f89" font-size="12">(SL-A:</text>
+  <text x="608" y="416" fill="#f7768e" font-size="12" font-weight="bold">1</text>
+  <text x="622" y="416" fill="#565f89" font-size="12">, need:</text>
+  <text x="672" y="416" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+  <text x="682" y="416" fill="#565f89" font-size="12">)</text>
+
+  <!-- Gap 2 -->
+  <text x="58" y="440" fill="#f7768e" font-size="12">SR 4.1</text>
+  <text x="120" y="440" fill="#a9b1d6" font-size="12">Information confidentiality</text>
+  <text x="560" y="440" fill="#565f89" font-size="12">(SL-A:</text>
+  <text x="608" y="440" fill="#f7768e" font-size="12" font-weight="bold">1</text>
+  <text x="622" y="440" fill="#565f89" font-size="12">, need:</text>
+  <text x="672" y="440" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+  <text x="682" y="440" fill="#565f89" font-size="12">)</text>
+
+  <!-- Gap 3 -->
+  <text x="58" y="464" fill="#e0af68" font-size="12">SR 6.1</text>
+  <text x="120" y="464" fill="#a9b1d6" font-size="12">Audit log accessibility</text>
+  <text x="560" y="464" fill="#565f89" font-size="12">(SL-A:</text>
+  <text x="608" y="464" fill="#e0af68" font-size="12" font-weight="bold">2</text>
+  <text x="622" y="464" fill="#565f89" font-size="12">, need:</text>
+  <text x="672" y="464" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+  <text x="682" y="464" fill="#565f89" font-size="12">)</text>
+
+  <!-- Gap 4 -->
+  <text x="58" y="488" fill="#f7768e" font-size="12">SR 1.7</text>
+  <text x="120" y="488" fill="#a9b1d6" font-size="12">Strength of password-based authentication</text>
+  <text x="560" y="488" fill="#565f89" font-size="12">(SL-A:</text>
+  <text x="608" y="488" fill="#f7768e" font-size="12" font-weight="bold">1</text>
+  <text x="622" y="488" fill="#565f89" font-size="12">, need:</text>
+  <text x="672" y="488" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+  <text x="682" y="488" fill="#565f89" font-size="12">)</text>
+
+  <!-- Gap 5 -->
+  <text x="58" y="512" fill="#e0af68" font-size="12">SR 4.3</text>
+  <text x="120" y="512" fill="#a9b1d6" font-size="12">Use of cryptography</text>
+  <text x="560" y="512" fill="#565f89" font-size="12">(SL-A:</text>
+  <text x="608" y="512" fill="#e0af68" font-size="12" font-weight="bold">2</text>
+  <text x="622" y="512" fill="#565f89" font-size="12">, need:</text>
+  <text x="672" y="512" fill="#bb9af7" font-size="12" font-weight="bold">3</text>
+  <text x="682" y="512" fill="#565f89" font-size="12">)</text>
+
+  <!-- Bottom prompt -->
+  <text x="30" y="558" fill="#565f89" font-size="11">Legend:</text>
+  <rect x="86" y="547" width="12" height="12" rx="1" fill="#9ece6a"/>
+  <text x="104" y="558" fill="#565f89" font-size="11">met</text>
+  <rect x="132" y="547" width="12" height="12" rx="1" fill="#e0af68"/>
+  <text x="150" y="558" fill="#565f89" font-size="11">partial</text>
+  <rect x="196" y="547" width="12" height="12" rx="1" fill="#f7768e"/>
+  <text x="214" y="558" fill="#565f89" font-size="11">gap</text>
+
+  <!-- Prompt line -->
+  <text x="30" y="582" fill="#9ece6a" font-size="12">$</text>
+  <rect x="44" y="572" width="8" height="14" fill="#c0caf5" opacity="0.7"/>
+</svg>
