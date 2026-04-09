@@ -1,5 +1,9 @@
 # iec62443-audit v1.0.0
 
+[![CI](https://github.com/isecwire/iec62443-audit/actions/workflows/ci.yml/badge.svg)](https://github.com/isecwire/iec62443-audit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+
 Professional IEC 62443 security level assessment tool for industrial control systems.
 Stable production release.
 
